@@ -19,8 +19,8 @@ N_GRAM_SIZE = 3
 NORMALIZATION = False
 EPOCHS = 60
 VECTOR_SIZE = 300
-TRAIN_MODEL = False
-MODEL_VERSION = "language_ngrams_v5_n3_e60"
+TRAIN_MODEL = True
+MODEL_VERSION = "language_ngrams_v6_n3_e60"
 
 # ----- GRAPH SETTINGS -----
 THRESHOLD = 0.96
@@ -46,12 +46,13 @@ if __name__ == '__main__':
     date = strftime("%d.%m.%Y %H:%M:%S", gmtime())
     raport_only(f"---- RAPORT Z DNIA {date} ----")
 
-    languages_list = ["albanian", "basque", "bosnian","catalan", "croatian", "czech",
-                      "danish", "dutch", "english", "estonian", "finnish",
-                      "french", "galician", "german", "hungarian", "icelandic",
-                      "indonesian", "italian", "latvian", "lithuanian", "malay",
-                      "norwegian", "polish", "portuguese", "serbian",
-                      "slovak", "spanish", "swedish", "turkish"]
+    languages_list = ["albanian", "basque", "bosnian","catalan", "croatian",
+                      "czech", "danish", "dutch", "english", "estonian",
+                      "finnish", "french", "galician", "german", "hungarian",
+                      "icelandic", "indonesian", "italian", "latvian", "lithuanian",
+                      "malay", "norwegian", "polish", "portuguese", "romanian",
+                      "serbian", "slovak", "slovenian", "spanish", "swedish",
+                      "turkish", "vietnamese"]
     datasets = {}
 
     model_path = os.path.join("Models", MODEL_VERSION + ".model")
