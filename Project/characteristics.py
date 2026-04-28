@@ -1,13 +1,16 @@
+import os
 from collections import Counter
 
 import math
 import numpy as np
+import pandas as pd
 
 VOWELS = set("aeiouyàáâãäåæèéêëìíîïòóôõöøùúûüýāąēėęěīįıōőœũūůűųοаеиоу")
 
 YELLOW = '\033[93m'
 BLUE = '\033[94m'
 RESET = '\033[0m'
+GREEN = '\033[92m \x1B[3m'
 
 def calculate_entropy(ngram_counts):
     total = sum(ngram_counts.values())
@@ -21,6 +24,7 @@ def calculate_entropy(ngram_counts):
     return entropy
 
 def characterise_clusters(groups, datasets, only_groups):
+    results = []
 
     for label, langs in sorted(groups.items()):
         total_words = 0
@@ -92,3 +96,32 @@ def characterise_clusters(groups, datasets, only_groups):
         print(f" - Najczęstsze sufiksy: {suffixes}")
         print(f" - Entropia 2-gramowa: {entropy:.2f} bit")
         print("-" * 100)
+
+    #     exemplar = langs[0].capitalize()
+    #     cluster_size = len(langs)
+    #
+    #     # Zapisywanie do słownika
+    #     results.append({
+    #         'Lider grupy': exemplar,
+    #         'Rozmiar klastra': cluster_size,
+    #         'Średnia długość słowa': round(average_word_length, 2),
+    #         'Odchylenie standardowe długości słowa': round(standard_deviation, 2),
+    #         'Procent samogłosek': round(vowel_percentage, 1),
+    #         'Średnia najdłuższa zbitka spółgłoskowa.': round(average_max_consonant_cluster, 2),
+    #
+    #         'Najczęstsze prefiksy': {prefixes},
+    #         'Najczęstsze sufiksy': {suffixes},
+    #
+    #         'Entropia 2-gramowa': round(entropy, 2)
+    #     })
+    #
+    # data_frame = pd.DataFrame(results)
+    #
+    # data_frame.to_csv(os.path.join("Raports", "results.csv"), index=False, sep=';', decimal=',')
+    # print(f"\n{GREEN}Zapisano wyniki do pliku: results.csv{RESET}")
+    #
+    # print(f"\n{YELLOW}--- KOD TABELI DO LATEXA ---{RESET}")
+    # print(
+    #     data_frame.to_latex(index=False, float_format="%.2f", caption="Charakterystyka morfologiczna wyodrębnionych klastrów.",
+    #                 label="tab:results"))
+    # print(f"{YELLOW}----------------------------{RESET}\n")

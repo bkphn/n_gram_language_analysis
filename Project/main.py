@@ -19,7 +19,7 @@ N_GRAM_SIZE = 3
 NORMALIZATION = False
 EPOCHS = 60
 VECTOR_SIZE = 300
-TRAIN_MODEL = True
+TRAIN_MODEL = False
 MODEL_VERSION = "language_ngrams_v6_n3_e60"
 
 # ----- GRAPH SETTINGS -----
